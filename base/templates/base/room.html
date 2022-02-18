@@ -113,7 +113,7 @@
                         src="https://randomuser.me/api/portraits/men/37.jpg"
                       />
                     </div>
-                    <span>@{{message.username}}</span>
+                    <span>@{{message.user.username}}</span>
                   </a>
                   <span class="thread__date"
                     >{{message.created|timesince}}</span
@@ -148,8 +148,9 @@
         </div>
       </div>
       <div class="room__message">
-        <form action="#">
-          <input name="" placeholder="Write your message here..." />
+        <form action="" method="POST">
+          {% csrf_token %}
+          <input name="body" placeholder="Write your message here..." />
         </form>
       </div>
     </div>
@@ -170,7 +171,7 @@
           <p>
             {{user.username}}
             <span>@{{user.username}}</span>
-          </p>
+          </p> 
         </a>
 
         {% endfor %}
